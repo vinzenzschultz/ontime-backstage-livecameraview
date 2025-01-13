@@ -1,0 +1,18 @@
+.blink {
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 20%;
+  }
+}
+.fourtyfive {
+  transform: rotate(45deg);
+}
+sup.period {
+  top: -1em;
+  font-size: 0.4em;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style="color-scheme: light;">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101010">
+  <meta name="ontime" content="ontime - time keeping for live events">
+  <meta name="robots" content="noindex">
+  <title>ontime - Backstage</title>
+  <style>
+    body,
+    html {
+      background-color: rgba(0, 0, 0, 0) !important;
+    }
+  </style>
+  <link rel="stylesheet" crossorigin="" href="styles/index-B8rAzrqx.css">
+  <style data-emotion="css-global" data-s=""></style>
+  <style data-emotion="css-global" data-s=""></style>
+  <link rel="stylesheet" href="styles/SuperscriptTime-wOQjNZtg.css">
+  <link rel="stylesheet" href="styles/animation-Bh5_YAx1.css">
+  <link rel="stylesheet" href="styles/TitleCard-HZSoBlcA.css">
+  <link rel="stylesheet" href="styles/SwatchPicker-_OIWZZmG.css">
+  <link rel="stylesheet" href="styles/ViewParamsEditor-CA1i9TQW.css">
+  <link rel="stylesheet" href="styles/Backstage-VQMvrGal.css">
+</head>
+
+<body class="chakra-ui-light" cz-shortcut-listen="true">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div class="App">
+      <div class="_buttonContainer_90bn6_17 "></div>
+      <div class="backstage " data-testid="backstage-view">
+        <div class="project-header"><span class="projekttitel"></span><div class="clock-container">
+            <div class="label">Uhrzeit jetzt</div>
+            <div class="time"></div>
+          </div>
+        </div>
+        <div class="fade progress-bar__bg  progress-container">
+          <div class="progress-bar__indicator" style="width: 0%;"></div>
+        </div>
+        <div class="now-container fade">
+          <div class="event now" style="transform: none;">
+            <div class="title-card "><span class="title-card__title"></span><span class="title-card__label"></span>
+              <div class="title-card__secondary"></div>
+            </div>
+            <div class="timer-group">
+              <div class="aux-timers">
+                <div class="aux-timers__label">begonnen um</div>
+                <div class="aux-timers__value start"></div>
+              </div>
+              <div class="timer-gap"></div>
+              <div class="aux-timers">
+                <div class="aux-timers__label">erwartetes Ende</div>
+                <div class="aux-timers__value ende"></div>
+              </div>
+              <div class="timer-gap"></div>
+              <div class="aux-timers">
+                <div class="aux-timers__label">Stage Timer</div>
+                <div class="aux-timers__value aktuell"></div>
+              </div>
+            </div>
+          </div>
+          <div class="title-card event next fadeEinzeln title-card-next" id="nextVisibility" style="transform: none;"><span
+              class="title-card__title" style=" height: 1.3em;"></span><span class="title-card__label">als
+              nächstes</span>
+            <div class="title-card__secondary"></div>
+          </div>
+        </div>
+        <div class="schedule schedule-container fade">
+          <div class="title-card event next fadeEinzeln" id="einsVor" style="transform: none;"><span
+              class="title-card__secondary demnaechst" id="eins"></span><span class="title-card__label">demnächst</span>
+            <div class="title-card__secondary"></div>
+          </div>
+          <div class="title-card event next fadeEinzeln" id="zweiVor" style="transform: none;"><span
+              class="title-card__secondary demnaechst" id="zwei"></span><span class="title-card__label">demnächst</span>
+            <div class="title-card__secondary"></div>
+          </div>
+          <div class="title-card event next fadeEinzeln" id="dreiVor" style="transform: none;"><span
+              class="title-card__secondary demnaechst" id="drei"></span><span class="title-card__label">demnächst</span>
+            <div class="title-card__secondary"></div>
+          </div>
+          <div class="title-card event next fadeEinzeln" id="vierVor" style="transform: none;"><span
+              class="title-card__secondary demnaechst" id="vier"></span><span class="title-card__label">demnächst</span>
+            <div class="title-card__secondary"></div>
+          </div>
+        </div>
+        <div class="info"><img src=""
+            style="padding-left: 45px;"></img></div>
+      </div>
+    </div>
+    <div id="identify-portal"></div><span id="__chakra_env" hidden=""></span>
+  </div>
+
+
+
+  <div class="chakra-portal">
+    <div role="region" aria-live="polite" id="chakra-toast-manager-top"
+      style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column; margin: 0px auto; top: env(safe-area-inset-top, 0px); right: env(safe-area-inset-right, 0px); left: env(safe-area-inset-left, 0px);">
+    </div>
+    <div role="region" aria-live="polite" id="chakra-toast-manager-top-left"
+      style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column; top: env(safe-area-inset-top, 0px); left: env(safe-area-inset-left, 0px);">
+    </div>
+    <div role="region" aria-live="polite" id="chakra-toast-manager-top-right"
+      style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column; top: env(safe-area-inset-top, 0px); right: env(safe-area-inset-right, 0px);">
+    </div>
+    <div role="region" aria-live="polite" id="chakra-toast-manager-bottom-left"
+      style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column; bottom: env(safe-area-inset-bottom, 0px); left: env(safe-area-inset-left, 0px);">
+    </div>
+    <div role="region" aria-live="polite" id="chakra-toast-manager-bottom"
+      style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column; margin: 0px auto; bottom: env(safe-area-inset-bottom, 0px); right: env(safe-area-inset-right, 0px); left: env(safe-area-inset-left, 0px);">
+    </div>
+    <div role="region" aria-live="polite" id="chakra-toast-manager-bottom-right"
+      style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column; bottom: env(safe-area-inset-bottom, 0px); right: env(safe-area-inset-right, 0px);">
+    </div>
+  </div>
+  <div id="navigation-menu-portal"></div><protonpass-root-39fb data-protonpass-role="root"
+    data-protonpass-theme="dark"></protonpass-root-39fb>
+</body>
+<script src="app.js"></script>
+
+</html>
