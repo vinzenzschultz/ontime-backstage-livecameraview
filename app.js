@@ -275,7 +275,7 @@ const updateEventStartTime = (eventNow) => {
     const startTimeElement = document.querySelector('.aux-timers__value.start');
     if (startTimeElement && eventNow && eventNow.timeStart) {
         const startTime = new Date(eventNow.timeStart);
-        const hours = String(startTime.getHours()).padStart(2, '0');
+        const hours = String((startTime.getHours() - 4 + 24) % 24).padStart(2, '0');
         const minutes = String(startTime.getMinutes()).padStart(2, '0');
         const seconds = String(startTime.getSeconds()).padStart(2, '0');
         startTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
@@ -297,7 +297,7 @@ const updateTimerStartTime = (startedAt) => {
     const timerStartElement = document.querySelector('.aux-timers__value.start');
     if (timerStartElement && startedAt) {
         const startTime = new Date(startedAt);
-        const hours = String(startTime.getHours()).padStart(2, '0');
+        const hours = String((startTime.getHours() - 1 + 24) % 24).padStart(2, '0');
         const minutes = String(startTime.getMinutes()).padStart(2, '0');
         const seconds = String(startTime.getSeconds()).padStart(2, '0');
         timerStartElement.textContent = `${hours}:${minutes}:${seconds}`;
@@ -319,7 +319,7 @@ const updateTimerExpectedFinish = (expectedFinish) => {
     const finishTimeElement = document.querySelector('.aux-timers__value.ende');
     if (finishTimeElement && expectedFinish) {
         const finishTime = new Date(expectedFinish);
-        const hours = String(finishTime.getHours()).padStart(2, '0');
+        const hours = String((finishTime.getHours() - 1 + 24) % 24).padStart(2, '0');
         const minutes = String(finishTime.getMinutes()).padStart(2, '0');
         const seconds = String(finishTime.getSeconds()).padStart(2, '0');
         finishTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
