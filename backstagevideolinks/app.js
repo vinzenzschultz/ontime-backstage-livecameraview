@@ -106,6 +106,32 @@ const fetchNextFourEvents = async (currentEventId) => {
     } catch (error) {
         console.error('Error fetching next 4 events:', error);
     }
+    if(true){
+        document.getElementById("fuenfVor").classList.add("hidden")
+        document.getElementById("fuenfVor").classList.remove("visible")
+
+        const response = await fetch(`/data/rundown`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch events: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const events = data || [];
+        const currentIndex = data.findIndex(event => event.id === currentEventId);
+
+        for (let i = currentIndex; i >= 0; i--){
+            if(events[i].type == "block"){
+                const block = document.getElementById("fuenf");
+                block.textContent = events[i].title || 'Event title not available';
+                document.getElementById("fuenfVor").classList.remove("hidden")
+                document.getElementById("fuenfVor").classList.add("visible")
+                break;
+            }
+        }
+
+    } else {
+        console.error('Error fetching current block:', error);
+    }
 };
 
 const populateEventDivs = (events) => {
@@ -258,7 +284,8 @@ const updateNextEventCard = (eventNext) => {
     const nextTitleElement = document.querySelector('.naechstes .title-card__title');
     if (nextTitleElement && eventNext && eventNext.title) {
         nextTitleElement.textContent = eventNext.title;
-
+        document.querySelector('.naechstes').classList.remove("hidden")
+        document.querySelector('.naechstes').classList.add("visible")
     }
 };
 
@@ -267,6 +294,8 @@ const clearNextEventCard = () => {
     const nextTitleElement = document.querySelector('.naechstes .title-card__title');
     if (nextTitleElement) {
         nextTitleElement.textContent = '';
+        document.querySelector('.naechstes').classList.remove("visible")
+        document.querySelector('.naechstes').classList.add("hidden")
     }
 };
 

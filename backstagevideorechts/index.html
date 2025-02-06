@@ -32,7 +32,7 @@
     <div class="App">
       <div class="_buttonContainer_90bn6_17 "></div>
       <div class="backstage " data-testid="backstage-view">
-        <div class="project-header"><span class="projekttitel"></span><div class="clock-container">
+        <div class="project-header"><span class="projekttitel" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></span><div class="clock-container">
             <div class="label">Uhrzeit jetzt</div>
             <div class="time"></div>
           </div>
@@ -62,9 +62,8 @@
               </div>
             </div>
           </div>
-          <div class="title-card event next fadeEinzeln title-card-next" id="nextVisibility" style="transform: none;"><span
-              class="title-card__title" style=" height: 1.3em; margin-top: 20px;"></span><span class="title-card__label">als
-              nächstes</span>
+          <div class="title-card event next fadeEinzeln title-card-next naechstes" id="nextVisibility" style="transform: none;"><span
+              class="title-card__title" style=" height: 1.3em; margin-top: 20px;"></span><span class="title-card__label">als nächstes</span>
             <div class="title-card__secondary"></div>
           </div>
         </div>
@@ -86,7 +85,11 @@
             <div class="title-card__secondary"></div>
           </div>
         </div>
-        <div class="info"><img src="" style="padding-left: 25px; width: 100%;"></img></div>
+        <div class="info"><img src="" style="width: 100%;"></img>
+          <div class="title-card event next fade fadeEinzeln" id="fuenfVor" style="transform: none; width: 40%; padding-bottom: 5px; position: absolute; bottom: 67px;"><span
+              class="title-card__secondary aktueller block" id="fuenf" style="margin-top: 20px; width: 100%;"></span><span class="title-card__label">aktueller Block</span>
+            <div class="title-card__secondary"></div>
+          </div></div>
       </div>
     </div>
 </body>
