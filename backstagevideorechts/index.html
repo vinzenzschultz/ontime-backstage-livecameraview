@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#101010">
   <meta name="ontime" content="ontime - time keeping for live events">
   <meta name="robots" content="noindex">
+  <script src="ovenplayer.js"></script>
   <title>ontime - Backstage</title>
   <style>
     body,
@@ -85,7 +86,7 @@
             <div class="title-card__secondary"></div>
           </div>
         </div>
-        <div class="info"><img src="" alt="" style="width: 100%;"></img>
+        <div class="info"><div class="video" style="width: 100%;"></img>
           <div class="title-card event next fade fadeEinzeln" id="fuenfVor" style="transform: none; width: 40%; padding-bottom: 5px; position: absolute; bottom: 67px;"><span
               class="title-card__secondary aktueller block" id="fuenf" style="margin-top: 20px; width: 100%;"></span><span class="title-card__label">aktueller Block</span>
             <div class="title-card__secondary"></div>
@@ -94,5 +95,15 @@
     </div>
 </body>
 <script src="app.js"></script>
+<script>
+  const player = OvenPlayer.create("video", {
+    sources: [{
+        type: "webrtc",
+        file: "ws://192.168.1.80:3333/app/bypass_stream"
+    }],
+    autoStart: true,
+    mute: true // Notwendig für Autoplay
+});
+</script>
 
 </html>

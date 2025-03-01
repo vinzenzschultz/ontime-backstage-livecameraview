@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#101010">
   <meta name="ontime" content="ontime - time keeping for live events">
   <meta name="robots" content="noindex">
+  <script src="ovenplayer.js"></script>
   <title>ontime - Backstage</title>
   <style>
     body,
@@ -100,8 +101,11 @@
             <div class="title-card__secondary"></div>
           </div>
         </div>
-        <div class="info" style="display: flex; justify-content: center; align-items: center; max-height: calc(100vh - 20px); padding-bottom: 20px; overflow: hidden;">
-          <img src="" alt="" style="max-width: 100%; max-height: calc(100vh - 380px); display: block; margin-left: auto; margin-right: auto; margin-bottom: 10%; object-fit: contain;"></img>
+        <div class="info"
+          style="display: flex; justify-content: center; align-items: center; max-height: calc(100vh - 20px); padding-bottom: 20px; overflow: hidden;">
+          <div id="video"
+            style="max-width: 100%; max-height: calc(100vh - 380px); display: block; margin-left: auto; margin-right: auto; margin-bottom: 10%; object-fit: contain;">
+          </div>
         </div>
       </div>
     </div>
@@ -109,5 +113,15 @@
   </div>
 </body>
 <script src="app.js"></script>
+<script>
+  const player = OvenPlayer.create("video", {
+    sources: [{
+        type: "webrtc",
+        file: "ws://192.168.1.80:3333/app/bypass_stream"
+    }],
+    autoStart: true,
+    mute: true // Notwendig für Autoplay
+});
+</script>
 
 </html>
