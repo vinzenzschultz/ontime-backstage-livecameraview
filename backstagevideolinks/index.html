@@ -37,7 +37,7 @@
             style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></span>
           <div class="clock-container">
             <div class="label">Uhrzeit jetzt</div>
-            <div class="time"></div>
+            <div class="uhrzeit time">--:--:--</div>
           </div>
         </div>
         <div class="fade progress-bar__bg  progress-container">
@@ -116,12 +116,12 @@
 <script>
   const player = OvenPlayer.create("video", {
     sources: [{
-        type: "webrtc",
-        file: "ws://192.168.1.80:3333/app/bypass_stream"
+      type: "webrtc",
+      file: "ws://192.168.1.80:3333/app/bypass_stream"
     }],
     autoStart: true,
-    mute: true // Notwendig für Autoplay
-});
+    mute: true
+  });
 </script>
 
 </html>

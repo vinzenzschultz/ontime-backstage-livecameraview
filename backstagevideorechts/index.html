@@ -33,9 +33,11 @@
     <div class="App">
       <div class="_buttonContainer_90bn6_17 "></div>
       <div class="backstage " data-testid="backstage-view">
-        <div class="project-header"><span class="projekttitel" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></span><div class="clock-container">
+        <div class="project-header"><span class="projekttitel"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></span>
+          <div class="clock-container">
             <div class="label">Uhrzeit jetzt</div>
-            <div class="time"></div>
+            <div class="uhrzeit time">--:--:--</div>
           </div>
         </div>
         <div class="fade progress-bar__bg  progress-container">
@@ -63,47 +65,57 @@
               </div>
             </div>
           </div>
-          <div class="title-card event next fadeEinzeln title-card-next naechstes" id="nextVisibility" style="transform: none;"><span
-              class="title-card__title" style=" height: 1.3em; margin-top: 20px; font-size: clamp(1rem, 2vw, 2.25rem)"></span><span class="title-card__label">als nächstes</span>
+          <div class="title-card event next fadeEinzeln title-card-next naechstes" id="nextVisibility"
+            style="transform: none;"><span class="title-card__title"
+              style=" height: 1.3em; margin-top: 20px; font-size: clamp(1rem, 2vw, 2.25rem)"></span><span
+              class="title-card__label">als nächstes</span>
             <div class="title-card__secondary"></div>
           </div>
         </div>
         <div class="schedule schedule-container fade">
-          <div class="title-card event next fadeEinzeln" id="einsVor" style="transform: none; padding-bottom: 5px; width: 100%;"><span
-              class="title-card__secondary demnaechst" id="eins" style="margin-top: 20px;"></span><span class="title-card__label">demnächst</span>
+          <div class="title-card event next fadeEinzeln" id="einsVor"
+            style="transform: none; padding-bottom: 5px; width: 100%;"><span class="title-card__secondary demnaechst"
+              id="eins" style="margin-top: 20px;"></span><span class="title-card__label">demnächst</span>
             <div class="title-card__secondary"></div>
           </div>
-          <div class="title-card event next fadeEinzeln" id="zweiVor" style="transform: none; padding-bottom: 5px; width: 100%;"><span
-              class="title-card__secondary demnaechst" id="zwei" style="margin-top: 20px;"></span><span class="title-card__label">demnächst</span>
+          <div class="title-card event next fadeEinzeln" id="zweiVor"
+            style="transform: none; padding-bottom: 5px; width: 100%;"><span class="title-card__secondary demnaechst"
+              id="zwei" style="margin-top: 20px;"></span><span class="title-card__label">demnächst</span>
             <div class="title-card__secondary"></div>
           </div>
-          <div class="title-card event next fadeEinzeln" id="dreiVor" style="transform: none; padding-bottom: 5px; width: 100%;"><span
-              class="title-card__secondary demnaechst" id="drei" style="margin-top: 20px;"></span><span class="title-card__label">demnächst</span>
+          <div class="title-card event next fadeEinzeln" id="dreiVor"
+            style="transform: none; padding-bottom: 5px; width: 100%;"><span class="title-card__secondary demnaechst"
+              id="drei" style="margin-top: 20px;"></span><span class="title-card__label">demnächst</span>
             <div class="title-card__secondary"></div>
           </div>
-          <div class="title-card event next fadeEinzeln" id="vierVor" style="transform: none; padding-bottom: 5px; width: 100%;"><span
-              class="title-card__secondary demnaechst" id="vier" style="margin-top: 20px;"></span><span class="title-card__label">demnächst</span>
+          <div class="title-card event next fadeEinzeln" id="vierVor"
+            style="transform: none; padding-bottom: 5px; width: 100%;"><span class="title-card__secondary demnaechst"
+              id="vier" style="margin-top: 20px;"></span><span class="title-card__label">demnächst</span>
             <div class="title-card__secondary"></div>
           </div>
         </div>
-        <div class="info"><div class="video" style="width: 100%;"></img>
-          <div class="title-card event next fade fadeEinzeln" id="fuenfVor" style="transform: none; width: 40%; padding-bottom: 5px; position: absolute; bottom: 67px;"><span
-              class="title-card__secondary aktueller block" id="fuenf" style="margin-top: 20px; width: 100%;"></span><span class="title-card__label">aktueller Block</span>
-            <div class="title-card__secondary"></div>
-          </div></div>
+        <div class="info">
+          <div class="video" style="width: 100%;">
+            <div class="title-card event next fade fadeEinzeln" id="fuenfVor"
+              style="transform: none; width: 40%; padding-bottom: 5px; position: absolute; bottom: 67px;"><span
+                class="title-card__secondary aktueller block" id="fuenf"
+                style="margin-top: 20px; width: 100%;"></span><span class="title-card__label">aktueller Block</span>
+              <div class="title-card__secondary"></div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 </body>
 <script src="app.js"></script>
 <script>
   const player = OvenPlayer.create("video", {
     sources: [{
-        type: "webrtc",
-        file: "ws://192.168.1.80:3333/app/bypass_stream"
+      type: "webrtc",
+      file: "ws://192.168.1.80:3333/app/bypass_stream"
     }],
     autoStart: true,
-    mute: true // Notwendig für Autoplay
-});
+    mute: true
+  });
 </script>
 
 </html>

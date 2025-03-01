@@ -5,8 +5,7 @@ const connectWebSocket = () => {
     websocket.onopen = () => {
         console.log('WebSocket connected');
         // Fetch the current state immediately upon connection
-        fetchCurrentEvent();
-        updateClock(); // Start updating the clock
+        fetchCurrentEvent(); // Start updating the clock
         fetchProjectName(); // Fetch the project name
         showAllDivs();
         makeTitleCardBlinkGreen();
@@ -60,6 +59,7 @@ const handleTimerUpdates = (payload) => {
     updateTimerStartTime(payload.startedAt);
     updateTimerExpectedFinish(payload.expectedFinish);
     updateTimerCurrent(payload.current);
+    updateClock(payload.clock);
 
     if (payload.duration && payload.elapsed) {
         updateProgressBar(payload.elapsed, payload.duration);
@@ -215,6 +215,9 @@ const fetchCurrentEvent = async () => {
         }
         const data = await response.json();
         if (data.payload) {
+            if (data.payload.clock) {
+                updateClock();
+            }
             if (data.payload.eventNow) {
                 updateTitleCard(data.payload.eventNow);
                 updateEventStartTime(data.payload.eventNow);
@@ -411,16 +414,19 @@ const clearProgressBar = () => {
 };
 
 // Function to update the clock in the '.time' element
-const updateClock = () => {
-    const clockElement = document.querySelector('.time');
-    if (clockElement) {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+const updateClock = async () => {
+    const response = await fetch(`/api/poll`);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch current event: ${response.statusText}`);
     }
-    setTimeout(updateClock, 1000); // Update every second
+    const data = await response.json();
+    const currentTimeMillis = data.payload.clock;
+    const now = new Date(currentTimeMillis);
+    const hours = String(now.getUTCHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    document.querySelector('.uhrzeit').textContent = `${hours}:${minutes}:${seconds}`;
 };
 
 // Function to make the title card blink green
