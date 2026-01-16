@@ -1,7 +1,6 @@
 # Ontime Backstage Livecameraview
 
 This project implements a stream in an ontime backstage view.  
-There are two versions of the view. One with the video on the left side and one with it on the right side. The view with the video on the left side has a bigger stream than the one on the right side.  
 For it to work you have to copy one of the folders in the external folder of ontime and insert the WebRTC server ip adress and port in the index.html file.
 
 ## Third-Party Licenses
