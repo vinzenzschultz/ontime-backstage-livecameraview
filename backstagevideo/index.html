@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Backstage</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="ovenplayer.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="grid">
+        <div class="projekt" id="projektTitel">--</div>
+        <div class="uhr">
+            <div class="uhrInhalt">
+                <div class="uhrTitel">AKTUELLE UHRZEIT</div>
+                <div class="uhrInhaltZahl" id="uhrInhaltZahl">--:--:--</div>
+            </div>
+        </div>
+        <div class="aktuell">
+            <div class="progress">
+                <div class="progressbar" id="progressbar"></div>
+            </div>
+            <div class="inhalt">
+                <div class="titelAktuell">
+                    <div class="titelAktuellInhalt" id="titelAktuellInhalt">--</div>
+                    <hr>
+                </div>
+                <div class="start">
+                    <div class="gridName">BEGONNEN UM</div>
+                    <div class="gridZahl" id="begonnenUm">--:--:--</div>
+                </div>
+                <div class="ende">
+                    <div class="gridName">ERWARTETES ENDE</div>
+                    <div class="gridZahl" id="erwartetesEnde">--:--:--</div>
+                </div>
+                <div class="timer">
+                    <div class="gridName">STAGE TIMER</div>
+                    <div class="gridZahl" id="timer">--:--:--</div>
+                </div>
+            </div>
+        </div>
+        <div class="video">
+            <div id="videoplayer"></div>
+        </div>
+        <div class="next">
+            <div class="cardTitel">ALS NÄCHSTES</div>
+            <div class="cardTime">IN <span class="nextZeit" id="nextZeit">--:--</span></div>
+            <div class="cardName" id="nextInhalt">--</div>
+        </div>
+        <div class="eins">
+            <div class="cardTitel">DEMNNÄCHST</div>
+            <div class="cardTime">IN <span class="einsZeit" id="einsZeit">--:--</span></div>
+            <div class="cardName" id="einsInhalt">--</div>
+        </div>
+        <div class="zwei">
+            <div class="cardTitel">DEMNNÄCHST</div>
+            <div class="cardTime">IN <span class="zweiZeit" id="zweiZeit">--:--</span></div>
+            <div class="cardName" id="zweiInhalt">--</div>
+        </div>
+        <div class="drei">
+            <div class="cardTitel">DEMNNÄCHST</div>
+            <div class="cardTime">IN <span class="dreiZeit" id="dreiZeit">--:--</span></div>
+            <div class="cardName" id="dreiInhalt">--</div>
+        </div>
+        <div class="gruppe">
+            <div class="cardTitel">GRUPPE</div>
+            <div class="cardEnd">LÄUFT SEIT<br><span class="gruppeZeit" id="gruppeZeit">--:--</span></div>
+            <div class="cardTime">LÄUFT NOCH<br><span class="gruppeZeit" id="gruppeEnde">--:--</span></div>
+            <div class="cardName" id="gruppeInhalt">--</div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const player = OvenPlayer.create("videoplayer", {
+        sources: [{
+            type: "webrtc",
+            file: "ws://192.168.1.198:3333/app/bypass_stream"
+        }],
+        autoStart: true,
+        mute: true
+    });
+</script>
+
+</html>

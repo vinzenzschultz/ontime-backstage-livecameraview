@@ -1,0 +1,253 @@
+html,
+body {
+  background-color: #101010;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font-family-override, "Open Sans", "Segoe UI", sans-serif);
+  font-size: 2vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-template-rows: 0.7fr repeat(6, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  width: 97%;
+  height: 97%;
+}
+
+/* .uhr, */
+.inhalt,
+.progress,
+.progressbar,
+.next,
+.eins,
+.zwei,
+.drei,
+.vier,
+.gruppe {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+}
+
+.projekt {
+  grid-area: 1 / 1 / 2 / 3;
+  font-size: 5vh;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.uhr {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.uhrInhalt {
+  float: right;
+}
+
+.uhrTitel {
+  font-size: 2vh;
+}
+
+.uhrInhaltZahl {
+  font-size: 5vh;
+  font-weight: 500;
+}
+
+.aktuell {
+  grid-area: 2 / 1 / 4 / 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+}
+
+.progress {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.progressbar {
+  height: 100%;
+  width: 0%;
+  max-width: 100%;
+  background-color: #fa5656;
+  transition-duration: 1s;
+}
+
+.inhalt {
+  grid-area: 2 / 1 / 3 / 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 0.3fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  padding: 16px;
+}
+
+.titelAktuell {
+  grid-area: 1 / 1 / 2 / 4;
+  position: relative;
+}
+
+.titelAktuell hr {
+  border: none;
+  height: 2px;
+  background-color: #101010;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.titelAktuellInhalt {
+  font-size: 4vh;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.start {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.ende {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.timer {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.start,
+.ende,
+.timer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.7fr 1fr;
+  grid-column-gap: 6px;
+  grid-row-gap: 0px;
+}
+
+.gridName {
+  grid-area: 1 / 1 / 2 / 2;
+  font-size: 2vh;
+}
+
+.gridZahl {
+  grid-area: 2 / 1 / 3 / 2;
+  font-size: 3vh;
+  font-weight: 300;
+}
+
+.video {
+  grid-area: 4 / 1 / 8 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* max-height: calc(100vh - 20px); */
+  /* padding-bottom: 20px; */
+  overflow: hidden;
+}
+
+#videoplayer {
+  aspect-ratio: 16 / 9;
+  /* max-width: 100%; */
+  /* max-height: calc(100vh - 380px); */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-bottom: 10%; */
+  object-fit: contain;
+}
+
+.next {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.eins {
+  grid-area: 3 / 3 / 4 / 4;
+}
+
+.zwei {
+  grid-area: 4 / 3 / 5 / 4;
+}
+
+.drei {
+  grid-area: 5 / 3 / 6 / 4;
+}
+
+.next,
+.eins,
+.zwei,
+.drei,
+.gruppe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0.3fr 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 2px;
+  padding: 16px;
+}
+
+.cardTitel {
+  grid-area: 1 / 1 / 2 / 2;
+  font-size: 2vh;
+}
+
+.cardEnd {
+  grid-area: 1 / 2 / 2 / 3;
+  text-align: center;
+  font-size: 2vh;
+}
+
+.cardTime {
+  grid-area: 1 / 3 / 2 / 4;
+  float: right;
+  text-align: right;
+  font-size: 2vh;
+}
+
+.cardName {
+  grid-area: 2 / 1 / 3 / 4;
+  font-size: 2.4vh;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.next > .cardName {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.gruppe {
+  grid-area: 7 / 3 / 8 / 4;
+  grid-row-gap: 10px;
+  padding-bottom: 0px;
+}
+
+.gruppe > .cardName {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 3.4vh;
+}
