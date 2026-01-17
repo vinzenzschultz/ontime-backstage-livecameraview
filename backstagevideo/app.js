@@ -54,6 +54,7 @@ let rundown = null;
 let aktPosition = null;
 let dreiWeitere = null;
 let playmode = null;
+let letztesEvent = false;
 
 function handleOntimePayload(payload) {
   localData = { ...localData, ...payload };
@@ -64,14 +65,15 @@ function handleOntimePayload(payload) {
 
   if ("timer" in payload) {
     updateDOM("timer", formatTimer(payload.timer["current"]));
-    nextZeit = payload.timer["current"];
+    letztesEvent ? (nextZeit = null) : (nextZeit = payload.timer["current"]);
+
     updateProgress(payload.timer["elapsed"], payload.timer["duration"]);
     updateDOM(
       "erwartetesEnde",
       payload.clock > payload.timer["expectedFinish"] &&
         payload.timer["expectedFinish"] != null
         ? "überfällig"
-        : formatTimer(payload.timer["expectedFinish"], true)
+        : formatTimer(payload.timer["expectedFinish"], true),
     );
     updateDOM("begonnenUm", formatTimer(payload.timer["startedAt"], true));
     payload.timer["playback"] == "stop" ? playbackStop() : null;
@@ -80,6 +82,18 @@ function handleOntimePayload(payload) {
 
   if ("rundown" in payload) {
     gruppeSeit = payload.rundown["actualGroupStart"];
+    if (
+      payload.rundown["selectedEventIndex"] + 1 ==
+      payload.rundown["numEvents"]
+    ) {
+      updateDOM("nextInhalt", "--");
+      updateDOM("nextZeit", "--:--");
+      nextZeit = null;
+    }
+    letztesEvent =
+      payload.rundown["selectedEventIndex"] + 1 == payload.rundown["numEvents"]
+        ? true
+        : false;
   }
 
   if ("eventNow" in payload) {
@@ -90,6 +104,7 @@ function handleOntimePayload(payload) {
 
   if ("eventNext" in payload) {
     updateDOM("nextInhalt", String(payload.eventNext["title"]));
+    letztesEvent = false;
   }
   if (payload.eventNext == null) {
     // nextZeit = null;
@@ -135,7 +150,7 @@ function zeitrechnungen(clock, offsetMode, naechstenDrei) {
       ? nextZeit <= 0
         ? formatTimer(naechstenDrei[0].duration)
         : formatTimer(naechstenDrei[0].duration + nextZeit)
-      : "--:--"
+      : "--:--",
   );
   updateDOM("zweiInhalt", naechstenDrei[1] ? naechstenDrei[1].title : "--");
   updateDOM(
@@ -144,23 +159,27 @@ function zeitrechnungen(clock, offsetMode, naechstenDrei) {
       ? nextZeit <= 0
         ? formatTimer(naechstenDrei[0].duration + naechstenDrei[1].duration)
         : formatTimer(
-            naechstenDrei[0].duration + naechstenDrei[1].duration + nextZeit
+            naechstenDrei[0].duration + naechstenDrei[1].duration + nextZeit,
           )
-      : "--:--"
+      : "--:--",
   );
   updateDOM("dreiInhalt", naechstenDrei[2] ? naechstenDrei[2].title : "--");
   updateDOM(
     "dreiZeit",
     naechstenDrei[2]
       ? nextZeit <= 0
-        ? formatTimer(naechstenDrei[0].duration + naechstenDrei[1].duration + naechstenDrei[2].duration)
+        ? formatTimer(
+            naechstenDrei[0].duration +
+              naechstenDrei[1].duration +
+              naechstenDrei[2].duration,
+          )
         : formatTimer(
             naechstenDrei[0].duration +
               naechstenDrei[1].duration +
               naechstenDrei[2].duration +
-              nextZeit
+              nextZeit,
           )
-      : "--:--"
+      : "--:--",
   );
 
   if (isFinite(gruppeBis + offset - clock))
@@ -169,15 +188,15 @@ function zeitrechnungen(clock, offsetMode, naechstenDrei) {
       gruppeBis == null
         ? "--:--"
         : gruppeBis + offset - clock <= 0
-        ? "überfällig"
-        : formatTimer(gruppeBis + offset - clock)
+          ? "überfällig"
+          : formatTimer(gruppeBis + offset - clock),
     );
   if (isFinite(clock - gruppeSeit))
     updateDOM(
       "gruppeZeit",
-      gruppeSeit == null ? "--:--" : formatTimer(clock - gruppeSeit)
+      gruppeSeit == null ? "--:--" : formatTimer(clock - gruppeSeit),
     );
-  if (gruppeSeit == null) updateDOM("gruppeInhalt", "--");
+  if (gruppeSeit == null && playmode == "stop") updateDOM("gruppeInhalt", "--");
 }
 
 function playbackStop() {
@@ -223,10 +242,10 @@ function naechsteDreiEvents(rundown, aktPosition, anzahl = 3) {
 }
 
 async function blinken(id) {
-  document.getElementById(id).classList.add('blink');
-        setTimeout(() => {
-            document.getElementById(id).classList.remove('blink');
-        }, 3000);
+  document.getElementById(id).classList.add("blink");
+  setTimeout(() => {
+    document.getElementById(id).classList.remove("blink");
+  }, 3000);
 }
 
 const millisToSeconds = 1000;
@@ -243,7 +262,7 @@ function formatTimer(number, clock = false) {
   return `${isNegative ? "-" : ""}${
     isNull || clock ? leftPad(millis / millisToHours) + ":" : ""
   }${leftPad((millis % millisToHours) / millisToMinutes)}:${leftPad(
-    (millis % millisToMinutes) / millisToSeconds
+    (millis % millisToMinutes) / millisToSeconds,
   )}`;
 
   function leftPad(val) {
