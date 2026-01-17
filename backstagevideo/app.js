@@ -84,12 +84,12 @@ function handleOntimePayload(payload) {
 
   if ("eventNow" in payload) {
     updateDOM("titelAktuellInhalt", String(payload.eventNow["title"]));
+    blinken("inhalt");
     aktPosition = payload.eventNow["id"];
   }
 
   if ("eventNext" in payload) {
     updateDOM("nextInhalt", String(payload.eventNext["title"]));
-    blinken("inhalt");
   }
   if (payload.eventNext == null) {
     // nextZeit = null;
