@@ -89,6 +89,7 @@ function handleOntimePayload(payload) {
 
   if ("eventNext" in payload) {
     updateDOM("nextInhalt", String(payload.eventNext["title"]));
+    blinken("inhalt");
   }
   if (payload.eventNext == null) {
     // nextZeit = null;
@@ -219,6 +220,13 @@ function naechsteDreiEvents(rundown, aktPosition, anzahl = 3) {
     .slice(rundown.flatOrder.indexOf(aktPosition))
     .filter((event) => event?.type === "event" && !event?.skip)
     .slice(2, 2 + anzahl);
+}
+
+async function blinken(id) {
+  document.getElementById(id).classList.add('blink');
+        setTimeout(() => {
+            document.getElementById(id).classList.remove('blink');
+        }, 3000);
 }
 
 const millisToSeconds = 1000;
