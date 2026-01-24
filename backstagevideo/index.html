@@ -42,7 +42,9 @@
             </div>
         </div>
         <div class="video">
-            <div id="videoplayer"></div>
+            <div id="videoplayer">
+                <iframe src="http://192.168.1.186:8889/srttowebrtc/"></iframe>
+            </div>
         </div>
         <div class="next">
             <div class="cardTitel">ALS NÄCHSTES</div>
@@ -72,16 +74,5 @@
         </div>
     </div>
 </body>
-
-<script>
-    const player = OvenPlayer.create("videoplayer", {
-        sources: [{
-            type: "webrtc",
-            file: "ws://192.168.1.198:3333/app/bypass_stream"
-        }],
-        autoStart: true,
-        mute: true
-    });
-</script>
 
 </html>
