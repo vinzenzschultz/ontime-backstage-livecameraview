@@ -1,7 +1,7 @@
 # Ontime Backstage Livecameraview
 
 This project implements a stream in an ontime backstage view.  
-For it to work you have to copy one of the folders in the external folder of ontime and insert the WebRTC server ip adress and port in the index.html file.
+For this to work, you must copy the folder to Ontime's external folder and create a custom field named ‘videourl’ in the Ontime project.
 
 ## Third-Party Licenses
 
