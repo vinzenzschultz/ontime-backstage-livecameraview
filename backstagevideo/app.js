@@ -55,6 +55,7 @@ let aktPosition = null;
 let dreiWeitere = null;
 let playmode = null;
 let letztesEvent = false;
+let videolink = null;
 
 function handleOntimePayload(payload) {
   localData = { ...localData, ...payload };
@@ -219,8 +220,15 @@ function playbackStop() {
 
 async function htttpGETladen() {
   rundown = await getData("/data/rundowns/current");
-  let projekttitel = await getData("/data/project");
-  updateDOM("projektTitel", projekttitel.title);
+  let projekt = await getData("/data/project");
+  updateDOM("projektTitel", projekt.title);
+  const videoProjekt = projekt.custom.find(
+    item => item.title === "videourl"
+  )?.value;
+  if (videoProjekt != videolink) {
+    document.getElementById('videosrc').src = videoProjekt;
+    videolink = videoProjekt;
+  }
 }
 
 async function getData(url) {
