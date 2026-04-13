@@ -240,6 +240,7 @@ body {
 .cardTitel {
   grid-area: 1 / 1 / 2 / 2;
   font-size: 2vh;
+  white-space: nowrap;
 }
 
 .cardEnd {
