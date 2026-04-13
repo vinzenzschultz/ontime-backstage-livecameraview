@@ -36,25 +36,30 @@ body {
   border-radius: 8px;
 }
 
+.kopfzeile {
+  grid-area: 1 / 1 / 2 / 4;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .projekt {
-  grid-area: 1 / 1 / 2 / 3;
+  flex: 1;
+  min-width: 0;
   font-size: 5vh;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
 }
 
 .uhr {
-  grid-area: 1 / 3 / 2 / 4;
+  flex-shrink: 0;
 }
 
 .uhrInhalt {
-  float: right;
+  text-align: right;
 }
 
 .uhrTitel {
