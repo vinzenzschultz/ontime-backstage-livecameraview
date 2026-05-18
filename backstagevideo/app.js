@@ -55,7 +55,6 @@ let aktPosition = null;
 let dreiWeitere = null;
 let playmode = null;
 let letztesEvent = false;
-let videolink = null;
 
 function handleOntimePayload(payload) {
   localData = { ...localData, ...payload };
@@ -65,10 +64,10 @@ function handleOntimePayload(payload) {
   htttpGETladen();
 
   if ("timer" in payload) {
-    updateDOM("timer", formatTimer(payload.timer["current"]));
+    updateDOM("timer", localData.eventNow?.timerType === "clock" ? formatTimer(localData.clock, true) + " Uhr" : formatTimer(payload.timer["current"]));
     letztesEvent ? (nextZeit = null) : (nextZeit = payload.timer["current"]);
 
-    updateProgress(payload.timer["elapsed"], payload.timer["duration"]);
+    localData.eventNow?.timerType === "clock" ? updateProgress(localData.clock, 24 * millisToHours) : updateProgress(payload.timer["elapsed"], payload.timer["duration"]);
     updateDOM(
       "erwartetesEnde",
       payload.clock > payload.timer["expectedFinish"] &&
@@ -97,13 +96,13 @@ function handleOntimePayload(payload) {
         : false;
   }
 
-  if ("eventNow" in payload) {
+  if ("eventNow" in payload && payload.eventNow != null) {
     updateDOM("titelAktuellInhalt", String(payload.eventNow["title"]));
     blinken("inhalt");
     aktPosition = payload.eventNow["id"];
   }
 
-  if ("eventNext" in payload) {
+  if ("eventNext" in payload && payload.eventNext != null) {
     updateDOM("nextInhalt", String(payload.eventNext["title"]));
     letztesEvent = false;
   }
@@ -117,7 +116,7 @@ function handleOntimePayload(payload) {
     offsetMode = payload.offset["mode"];
     // gruppeBis = payload.offset["expectedGroupEnd"];
   }
-  if ("groupNow" in payload) {
+  if ("groupNow" in payload && payload.groupNow != null) {
     updateDOM("gruppeInhalt", String(payload.groupNow["title"]));
     gruppeBis = payload.groupNow["timeEnd"];
   }
@@ -220,15 +219,8 @@ function playbackStop() {
 
 async function htttpGETladen() {
   rundown = await getData("/data/rundowns/current");
-  let projekt = await getData("/data/project");
-  updateDOM("projektTitel", projekt.title);
-  const videoProjekt = projekt.custom.find(
-    item => item.title === "videourl"
-  )?.value;
-  if (videoProjekt != videolink) {
-    document.getElementById('videosrc').src = videoProjekt;
-    videolink = videoProjekt;
-  }
+  let projekttitel = await getData("/data/project");
+  updateDOM("projektTitel", projekttitel.title);
 }
 
 async function getData(url) {
